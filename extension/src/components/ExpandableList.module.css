@@ -1,0 +1,13 @@
+.list {
+  padding-left: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.listItem {
+  color: #fff;
+  padding: 5px;
+  cursor: pointer;
+  user-select: none;
+}

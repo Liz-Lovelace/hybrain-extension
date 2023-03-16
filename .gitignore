@@ -1,0 +1,43 @@
+backend/node_modules
+backend/yarn.lock
+
+# Frontend
+# dependencies
+extension/node_modules
+extension/.pnp
+extension/.pnp.js
+
+# testing
+extension/coverage
+
+#cache
+extension/.turbo
+extension/.next
+extension/.vercel
+
+# misc
+extension/.DS_Store
+extension/*.pem
+
+# debug
+extension/npm-debug.log*
+extension/yarn-debug.log*
+extension/yarn-error.log*
+extension/.pnpm-debug.log*
+
+
+# local env files
+extension/.env*
+
+extension/out/
+extension/build/
+extension/dist/
+
+# plasmo - https://www.plasmo.com
+extension/.plasmo
+
+# bpp - http://bpp.browser.market/
+extension/keys.json
+
+# typescript
+extension/.tsbuildinfo
