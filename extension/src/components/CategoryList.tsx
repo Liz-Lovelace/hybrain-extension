@@ -1,12 +1,12 @@
 import React from 'react';
 
-import CategoryItem from './CategoryItem';
+import Category from './Category';
 
-const CategoryList: React.FC<CategoryListProps> = ({ categories, promptChooserFunction }) => {
+const CategoryList: React.FC<CategoryListProps> = ({ categories }) => {
   return (
     <div>
       {categories.map((category, index) => (
-        <CategoryItem key={index} category={category} promptChooserFunction={promptChooserFunction} />
+        <Category key={index} category={category} />
       ))}
     </div>
   );

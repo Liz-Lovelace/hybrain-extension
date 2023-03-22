@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 
-import { CategoryData } from '../App';
-import styles from './CategoryItem.module.css';
-import ExpandableList from './ExpandableList';
+import styles from './Category.module.css';
+import PromptList from './PromptList';
 
-interface CategoryItemProps {
-  category: CategoryData;
-}
-
-const CategoryItem: React.FC<CategoryItemProps> = ({ category, promptChooserFunction }) => {
+const CategoryItem: React.FC<CategoryItemProps> = ({ category }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
@@ -21,7 +16,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({ category, promptChooserFunc
         {category.name}
         <span className={styles.icon}>{isExpanded ? 'V' : '>'}</span>
       </div>
-      {isExpanded && <ExpandableList items={category.prompts} promptChooserFunction={promptChooserFunction} />}
+      {isExpanded && <PromptList items={category.prompts} />}
     </div>
   );
 };

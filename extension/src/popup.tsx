@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 import CategoryList from './components/CategoryList';
 import useFetchData from './lib/useFetchedData.ts';
+import callContentScript from './lib/callContentScript.ts';
 
 function IndexPopup() {
   const { data, error, loading } = useFetchData('http://localhost:3000/prompts');
@@ -14,17 +15,7 @@ function IndexPopup() {
     return 'No data!';
   }
   const categories = JSON.parse(data).data;
-  let promptChooserFunction = async (prompt) => {
-    await callContentScriptFunction('callFunction', prompt);
-  };
-  return <CategoryList categories={categories} promptChooserFunction={promptChooserFunction} />;
-}
-
-function callContentScriptFunction(action, prompt) {
-  // Send a message to the content script
-  browser.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    browser.tabs.sendMessage(tabs[0].id, { action, data: prompt });
-  });
+  return <CategoryList categories={categories} />;
 }
 
 export default IndexPopup;
