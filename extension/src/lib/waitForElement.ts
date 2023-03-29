@@ -1,4 +1,4 @@
-export default function waitForElement(selector, timeout = 3000) {
+export default function (selector, timeout = 3000) {
   return new Promise((resolve) => {
     const element = document.querySelector(selector);
 

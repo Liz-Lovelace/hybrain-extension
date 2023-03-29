@@ -2,9 +2,9 @@ import axios from 'axios';
 import React from 'react';
 import { useEffect, useState } from 'react';
 
-import CategoryList from './components/CategoryList';
+import CategoryList from './components/popup/CategoryList';
+import { callBackgroundScript, callContentScript } from './lib/messagingApi.ts';
 import useFetchData from './lib/useFetchedData.ts';
-import callContentScript from './lib/callContentScript.ts';
 
 function IndexPopup() {
   const { data, error, loading } = useFetchData('http://localhost:3000/prompts');

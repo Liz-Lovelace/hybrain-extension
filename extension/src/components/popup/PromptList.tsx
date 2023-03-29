@@ -1,7 +1,7 @@
 import React from 'react';
 
+import Prompt from './Prompt.tsx';
 import styles from './PromptList.module.css';
-import Prompt from './Prompt';
 
 interface ExpandableListProps {
   items: {

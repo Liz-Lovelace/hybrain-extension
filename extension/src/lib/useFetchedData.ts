@@ -8,7 +8,7 @@ const axios = Axios.create({
   }
 });
 
-const useFetchData = (url) => {
+export default function (url) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -17,11 +17,9 @@ const useFetchData = (url) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(url);
-        //setData(response.data);
         setData(JSON.stringify(response));
         setError(null);
       } catch (err) {
-        //setData(JSON.stringify(err))
         setError(err);
       } finally {
         setLoading(false);
@@ -31,6 +29,4 @@ const useFetchData = (url) => {
   }, [url]);
 
   return { data, error, loading };
-};
-
-export default useFetchData;
+}

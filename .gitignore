@@ -1,3 +1,7 @@
+data/database.db
+.env
+
+# backend
 backend/node_modules
 backend/yarn.lock
 
