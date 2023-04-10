@@ -1,0 +1,23 @@
+.popupMenu {
+  width: 300px;
+  height: 400px;
+}
+
+.toggleWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.feedbackButton {
+  background-color: #48bb78;
+  color: white;
+}
+
+.feedbackButton:hover {
+  background-color: #38a169;
+}
+
+.feedbackButton:active {
+  background-color: #2f855a;
+}

@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { Settings } from './settings.ts';
 
 export default async function callBackend(method, url, data = null) {
-  const baseURL = 'http://localhost:3000';
+  const baseURL = await Settings.get('backendBaseURL');
   const config = {
     method,
     url: `${baseURL}${url}`,

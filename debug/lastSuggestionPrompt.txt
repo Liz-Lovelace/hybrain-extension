@@ -1,0 +1,29 @@
+TASK:
+
+You're given an AI-generated answer and multiple descriptions that could match this answer. Determine if any of the descriptions match the answer very close9ly, and if so, output the tag of the description. If there isn't a description that matches, output "NULL". Output "NULL" unless you're absolutely confident the answer matches the description.
+
+DESCRIPTIONS:
+
+complicated_terms:
+The answer uses complicated terms or words that the user might not understand
+
+too_long:
+The answer is longer than 500 words
+
+pros_and_cons:
+The answer involves making a decision or comparing options
+
+copyable:
+The answer has multiple unrelated items that the user might want to copy. The items should be independent from each other and NOT a list of steps. The items should not already be in code blocks.
+
+code_explanation:
+The answer contains code
+
+more_resources:
+The answer is about a topic or subject that can be explored further with additional resources
+
+ANSWER:
+
+<p>It's great that you're looking to transition to buying and preparing food yourself! Here are some simple, nourishing, and budget-friendly options that meet your criteria:</p><div><div class="yWsNLG_container mt-4"><p>a</p><div class="yWsNLG_buttonContainer"><p>b</p></div><button class="vDM3JW_copyButton transition duration-200">Copy Text</button></div></div><ol><li>Overnight Oats:</li></ol><ul><li>Rolled oats</li><li>Milk or non-dairy milk</li><li>Chia seeds</li><li>Honey or maple syrup</li><li>Toppings like nuts, seeds, or dried fruits</li></ul><p>Mix all ingredients together in a jar or container, let it sit overnight, and enjoy a healthy breakfast that requires no cooking.</p><ol start="2"><li>Tuna or Chickpea Salad:</li></ol><ul><li>Canned tuna or chickpeas (drained and rinsed)</li><li>Chopped vegetables like bell peppers, onions, and celery</li><li>Olive oil or mayonnaise</li><li>Salt, pepper, and any desired spices</li></ul><p>Mix everything together and store in an airtight container. Enjoy it with bread, crackers, or lettuce wraps.</p><ol start="3"><li>Rice and Beans:</li></ol><ul><li>Rice (white or brown)</li><li>Canned beans (black, kidney, or pinto)</li><li>Canned diced tomatoes</li><li>Spices (cumin, chili powder, garlic powder, onion powder)</li></ul><p>Cook rice according to package directions. In a separate pot, combine beans, tomatoes, and spices. Cook on low heat until heated through. Combine with cooked rice and store in an airtight container.</p><ol start="4"><li>Pasta Salad:</li></ol><ul><li>Pasta (any shape)</li><li>Canned vegetables (artichoke hearts, olives, sun-dried tomatoes)</li><li>Fresh vegetables (bell peppers, cucumbers, cherry tomatoes)</li><li>Feta cheese or canned beans for protein</li><li>Italian dressing or a simple vinaigrette</li></ul><p>Cook pasta according to package directions. Drain and rinse with cold water. Mix all ingredients together and store in an airtight container.</p><ol start="5"><li>Lentil Soup:</li></ol><ul><li>Dried lentils</li><li>Canned tomatoes</li><li>Chopped vegetables (carrots, onions, celery)</li><li>Vegetable or chicken broth</li><li>Spices (cumin, paprika, bay leaf)</li></ul><p>Cook lentils and vegetables in broth according to lentil package directions. Add canned tomatoes and spices, and simmer until flavors are well combined. Store in an airtight container.</p><p>While some of these items don't necessarily require refrigeration, it's recommended to store most prepared dishes in the refrigerator for food safety and to extend their shelf life.</p>
+
+The answer has multiple unrelated items that the user might want to copy. The items should be independent from each other and NOT a list of steps. The items should not already be in code blocks.

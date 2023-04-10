@@ -1,0 +1,42 @@
+promptingSuggestions:
+  # Not to useful and many false positives
+  # math_and_logic_step_by_step:
+  #   suggestion: "For math and logic, ChatGPT will give more accurate answers if you ask it for step-by step instructions"
+  #   prompt: "Let's work this out in a step by step way to be sure we have the right answer."
+  #   criteria: "The answer is solving a math or logic problem. The answer is also longer than 300 words."
+
+  complicated_terms:
+    suggestion: "If the answer uses terms you don't know, you can ask ChatGPT to explain it further"
+    prompt: "Write a detailed answer and explain technical terms as you go"
+    criteria: "The answer uses complicated terms or words that the user might not understand"
+
+  too_long:
+    suggestion: "If the answer is too long, ask ChatGPT to be more concice"
+    prompt: "Write a short answer"
+    criteria: "The answer is longer than 500 words"
+
+  pros_and_cons:
+    suggestion: "For decisions or comparisons, ask ChatGPT to list the pros and cons"
+    prompt: "List the pros and cons of each option"
+    criteria: "The answer involves making a decision or comparing options"
+
+  # neat idea but too many false positives
+  # real_life_examples:
+  #   suggestion: "To understand a concept better, ask ChatGPT for real-life examples"
+  #   prompt: "Give me some real-life examples to illustrate this concept"
+  #   criteria: "The answer is a complicated explanation of a concept or principle"
+
+  copyable:
+    suggestion: "If you want answers to be copyable, ask ChatGPT to put them inside separate codeblocks"
+    prompt: "Give each answer in a separate codeblock"
+    criteria: "The answer has multiple unrelated items that the user might want to copy. The items should be independent from each other and NOT a list of steps. The items should not already be in code blocks."
+
+  code_explanation:
+    suggestion: "ChatGPT can explain the code it wrote step-by-step"
+    prompt: "Walk through the code and explain what each line does"
+    criteria: "The answer contains code"
+
+  more_resources:
+    suggestion: "To dive deeper into a topic, ask ChatGPT for additional resources, such as articles or videos"
+    prompt: "Recommend some resources where I can learn more about this topic"
+    criteria: "The answer is about a topic or subject that can be explored further with additional resources"
