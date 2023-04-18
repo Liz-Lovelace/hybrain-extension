@@ -1,14 +1,8 @@
-import Axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const axios = Axios.create({
-  headers: {
-    'Content-Type': 'application/json',
-    'X-Requested-With': 'XMLHttpRequest'
-  }
-});
+const headers = new Headers({ 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' });
 
-export default function (url) {
+export default function useFetch(url) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,8 +10,12 @@ export default function (url) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(url);
-        setData(JSON.stringify(response));
+        const response = await fetch(url, { headers });
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const responseData = await response.json();
+        setData(JSON.stringify(responseData));
         setError(null);
       } catch (err) {
         setError(err);

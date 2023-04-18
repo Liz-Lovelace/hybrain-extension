@@ -1,6 +1,6 @@
 .popupMenu {
   width: 300px;
-  height: 400px;
+  height: 70px;
 }
 
 .toggleWrapper {
@@ -9,8 +9,12 @@
   margin-bottom: 1rem;
 }
 
+.toggle {
+  margin-left: 10px;
+}
+
 .feedbackButton {
-  background-color: #48bb78;
+  background-color: #38ab68;
   color: white;
 }
 

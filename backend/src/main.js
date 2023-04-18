@@ -6,11 +6,10 @@ import yaml from 'js-yaml';
 import bodyParser from 'body-parser';
 import { matchDescriptionPrompt } from './promptGeneration.js';
 import { askAI } from './openAiApi.js';
-import { getHandbook, findMatchingSuggestionCase, writeDebugFile } from './lib.js'
+import { findMatchingSuggestionCase, writeDebugFile } from './lib.js';
 
 const app = express();
 const port = 3000;
-
 
 const prompts = yaml.load(fs.readFileSync(new URL('../prompts.yaml', import.meta.url), 'utf8'));
 
@@ -21,37 +20,38 @@ app.use(cors({
 
 app.use(bodyParser.json());
 
-app.get('/test', async (req, res) => {
-  console.log(`received a request to /test at ${moment()}`)
+const asyncHandler = fn => (req, res, next) => {
+  Promise.resolve(fn(req, res, next)).catch(next);
+};
+
+app.get('/test', asyncHandler(async (req, res) => {
+  console.log(`received a request to /test at ${moment()}`);
   res.send('ok');
-});
+}));
 
-app.get('/prompts', async (req, res) => {
-  console.log(`received a request to /prompts at ${moment()}`)
+app.get('/prompts', asyncHandler(async (req, res) => {
+  console.log(`received a request to /prompts at ${moment()}`);
   res.send(JSON.stringify(prompts));
-});
+}));
 
-app.post('/processResult', async (req, res) => {
+app.post('/processResult', asyncHandler(async (req, res) => {
   console.log(`received a request to /processResult at ${moment()}`);
   const divContent = req.body.content;
-
-  const handbook = await getHandbook();
 
   let prompt = await matchDescriptionPrompt(divContent);
 
   if (prompt.length > 4 * 3000) {
-    console.log('prompt too long, not processing it')
+    console.log('prompt too long, not processing it');
     res.send({
       suggestion: null,
       prompt: null
     });
     return;
-  };
+  }
 
-  let answer = await askAI(prompt)
+  let answer = await askAI(prompt);
 
-  let result = await findMatchingSuggestionCase(answer)
-
+  let result = await findMatchingSuggestionCase(answer);
 
   if (!result){
     res.send({
@@ -61,12 +61,17 @@ app.post('/processResult', async (req, res) => {
     return;
   }
 
-  writeDebugFile('lastSuggestionPrompt.txt', `${prompt}\n\n${result.criteria}`)
+  writeDebugFile('lastSuggestionPrompt.txt', `${prompt}\n\n${result.criteria}`);
 
   res.send({
     suggestion: result.suggestion,
     prompt: result.prompt,
   });
+}));
+
+app.use((err, req, res) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong.');
 });
 
 app.listen(port, () => {

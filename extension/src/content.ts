@@ -1,17 +1,22 @@
-import { Settings } from './lib/settings.ts';
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import CopyButton from './components/general/CopyButton.tsx';
+import Suggestion from './components/promptSuggestions/Suggestion.tsx';
 import Action from './lib/action.ts';
 import gptInputRefresh from './lib/gptInputRefresh.ts';
+import htmlToCopyableText from './lib/htmlToCopyableText.ts';
 import lastElementWithSelector from './lib/lastElementWithSelector.ts';
 import { callBackgroundScript, callContentScript } from './lib/messagingApi.ts';
+import { Settings } from './lib/settings.ts';
 import transformPrompt from './lib/transformPrompt.ts';
 import waitForElement from './lib/waitForElement.ts';
-import Suggestion from './components/promptSuggestions/Suggestion.tsx';
+
+import 'chrome-browser-object-polyfill';
 
 export const config: PlasmoCSConfig = {
-  matches: ["https://chat.openai.com/chat*"],
-}
+  matches: ['https://chat.openai.com/c*']
+};
 
 Action('apply template', async (template) => {
   const input = await waitForElement('textarea', 5000);
@@ -27,7 +32,7 @@ Action('display prompt suggestions', async (suggestion) => {
   const answerElem = lastElementWithSelector('.markdown.prose.w-full.break-words');
   const suggestionComponent = React.createElement(Suggestion, {
     mainText: suggestion.suggestion,
-    buttonText: suggestion.prompt,
+    buttonText: suggestion.prompt
   });
   const container = document.createElement('div');
 
@@ -62,8 +67,8 @@ async function monitorAnswerDiv() {
 
     if (!isStreaming && wasInProcess) {
       wasInProcess = false;
-      if (await Settings.get('requestPromptSuggestions')){
-        await callBackgroundScript('send answer to backend', answerElem.innerHTML);
+      if (await Settings.get('requestPromptSuggestions')) {
+        await callBackgroundScript('send answer to backend', htmlToCopyableText(answerElem.innerHTML));
       }
     }
   };
@@ -74,24 +79,26 @@ async function monitorAnswerDiv() {
 async function addCopyButtons() {
   let elems = document.querySelectorAll('.markdown.prose.w-full.break-words');
   //let elems = document.querySelectorAll('.text-base');
-  elems.forEach(elem => {
-
-    // Check if the Suggestion component has already been appended
-    if (!elem.hasAttribute('data-has-suggestion')) {
-      const suggestionComponent = React.createElement(Suggestion, {
-        mainText: 'a',
-        buttonText: 'b',
-      });
-      const container = document.createElement('div');
-
-      elem.appendChild(container);
-      ReactDOM.render(suggestionComponent, container);
-
-      // Set the custom attribute to indicate that the Suggestion component has been appended
-      elem.setAttribute('data-has-suggestion', 'true');
+  elems.forEach((elem) => {
+    if (elem.classList.contains('result-streaming')) {
+      return;
     }
+    // Check if the Suggestion component has already been appended
+    if (elem.hasAttribute('data-has-copy-button')) {
+      return;
+    }
+    const buttonComponent = React.createElement(CopyButton, {
+      buttonText: htmlToCopyableText(elem.innerHTML),
+      onCopy: () => {}
+    });
+    const container = document.createElement('div');
+
+    elem.appendChild(container);
+    ReactDOM.render(buttonComponent, container);
+
+    // Set the custom attribute to indicate that the Suggestion component has been appended
+    elem.setAttribute('data-has-copy-button', 'true');
   });
 }
 
-
-setInterval(addCopyButtons, 1000);
+setInterval(addCopyButtons, 100);

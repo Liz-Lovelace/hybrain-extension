@@ -3,7 +3,7 @@ type SettingKey = keyof typeof defaultSettings;
 export class Settings {
   private static defaultSettings = {
     requestPromptSuggestions: true,
-    backendBaseURL: 'http://localhost:3000',
+    backendBaseURL: 'https://199.247.0.228:5091',
   };
 
   private static isValidProperty(property: SettingKey): boolean {
@@ -21,10 +21,8 @@ export class Settings {
 
     try {
       const result = await browser.storage.sync.get(property);
-      if (result[property] !== undefined)
-        return result[property]
-      else
-        return Settings.defaultSettings[property];
+      if (result[property] !== undefined) return result[property];
+      else return Settings.defaultSettings[property];
     } catch (error) {
       console.error(`Settings: Error getting property "${property}":`, error);
       throw error;
@@ -56,7 +54,7 @@ export class Settings {
     try {
       await browser.storage.sync.set(Settings.defaultSettings);
     } catch (error) {
-      console.error("Settings: Error resetting settings to default values:", error);
+      console.error('Settings: Error resetting settings to default values:', error);
       throw error;
     }
   }

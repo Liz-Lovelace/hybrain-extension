@@ -26,10 +26,11 @@ promptingSuggestions:
   #   prompt: "Give me some real-life examples to illustrate this concept"
   #   criteria: "The answer is a complicated explanation of a concept or principle"
 
-  copyable:
-    suggestion: "If you want answers to be copyable, ask ChatGPT to put them inside separate codeblocks"
-    prompt: "Give each answer in a separate codeblock"
-    criteria: "The answer has multiple unrelated items that the user might want to copy. The items should be independent from each other and NOT a list of steps. The items should not already be in code blocks."
+  # too many false positives and we already implement that basically
+  # copyable:
+  #   suggestion: "If you want answers to be copyable, ask ChatGPT to put them inside separate codeblocks"
+  #   prompt: "Give each answer in a separate codeblock"
+  #   criteria: "The answer is a list of more than 3 unrelated items. The items are be independent from each other. The items are not a list of steps or instructions. The answer doesn't contain any codeblocks."
 
   code_explanation:
     suggestion: "ChatGPT can explain the code it wrote step-by-step"

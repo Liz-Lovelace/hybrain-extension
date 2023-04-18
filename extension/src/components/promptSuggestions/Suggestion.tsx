@@ -1,7 +1,8 @@
 import React from 'react';
+
 import globalStyles from '../GlobalStyles.module.css';
-import styles from './Suggestion.module.css';
 import CopyButton from '../general/CopyButton';
+import styles from './Suggestion.module.css';
 
 const CustomComponent = ({ mainText, buttonText }) => {
   const handleCopy = () => {

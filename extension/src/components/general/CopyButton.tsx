@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import styles from './CopyButton.module.css';
 
 const CopyButton = ({ buttonText, onCopy }) => {
@@ -19,17 +20,10 @@ const CopyButton = ({ buttonText, onCopy }) => {
 
   return (
     <>
-      <button
-        className={`${styles.copyButton} transition duration-200`}
-        onClick={copyTextToClipboard}
-      >
+      <button className={`${styles.copyButton} transition duration-200`} onClick={copyTextToClipboard}>
         Copy Text
       </button>
-      {isCopied && (
-        <span className={styles.copiedText}>
-          Copied to clipboard
-        </span>
-      )}
+      {isCopied && <span className={styles.copiedText}>Copied to clipboard</span>}
     </>
   );
 };

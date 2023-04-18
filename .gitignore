@@ -45,3 +45,6 @@ extension/keys.json
 
 # typescript
 extension/.tsbuildinfo
+
+extension/yarn.lock
+debug/*
