@@ -8,8 +8,10 @@
 - `yarn lint --fix` - форматировать код
 ### .env
 В `/.env` (корневая папка проекта) должны быть заданы переменные:
+```
 OPENAI_API_KEY={ключ к API openAI}
 OPENAI_ORGANIZATION={id организации, к которой привязан ключ openAI}
+```
 
 ## Frontend (/extension)
 ### Commands
