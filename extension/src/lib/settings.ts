@@ -3,7 +3,7 @@ type SettingKey = keyof typeof defaultSettings;
 export class Settings {
   private static defaultSettings = {
     requestPromptSuggestions: true,
-    backendBaseURL: 'https://199.247.0.228:5091',
+    backendBaseURL: 'https://199.247.0.228:5091'
   };
 
   private static isValidProperty(property: SettingKey): boolean {
